@@ -34,4 +34,21 @@ public class MedicalRecordManager
         medicalRecords.add(record);
     }
 
+
+    public  ArrayList<MedicalRecord> findMedicalRecordByPatient(int patientId)
+    {
+        if(patientId<=0)
+        {
+            throw new IllegalArgumentException("patient id cant be positive");
+        }
+        ArrayList<MedicalRecord> results=new ArrayList<>();
+        for(MedicalRecord record:medicalRecords)
+        {
+            if(record.getPatient().getPatientId()==patientId)
+            {
+                results.add(record);
+            }
+        }
+        return results;
+    }
 }

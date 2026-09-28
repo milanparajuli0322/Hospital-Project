@@ -417,5 +417,13 @@ public class Main {
         MedicalRecord record=new MedicalRecord(1,patient,LocalDate.of(2026,9,23));
         medicalrecordmanager.addMedicalRecord(record);
         System.out.println(medicalrecordmanager.getAllMedicalRecords().size());
+
+
+        // Medical record finding
+        ArrayList<MedicalRecord> MedicalRecordById=medicalrecordmanager.findMedicalRecordByPatient(12345);
+        for(MedicalRecord val:MedicalRecordById)
+        {
+            System.out.println(val.getPatient().getPatientId()+"-"+val.getPatient().getName());
+        }
     }
 }
