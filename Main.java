@@ -425,5 +425,13 @@ public class Main {
         {
             System.out.println(val.getPatient().getPatientId()+"-"+val.getPatient().getName());
         }
+
+
+        // Filtering scheduled Appointments patients
+        ArrayList<Appointment>AppointmentByStatus=appointmentmanager.findAppointmentByStatus(Appointment.Status.SCHEDULED);
+        for(Appointment val:AppointmentByStatus)
+        {
+            System.out.println(val.getPatient().getPatientId()+"-"+val.getPatient().getName());
+        }
     }
 }

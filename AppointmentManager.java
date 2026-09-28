@@ -148,4 +148,22 @@ public class AppointmentManager {
         }
         return results;
     }
+
+
+    public ArrayList<Appointment> findAppointmentByStatus(Appointment.Status newStatus)
+    {
+        ArrayList<Appointment>results=new ArrayList<>();
+        if(newStatus==null)
+        {
+            throw new IllegalArgumentException("Status cannot be empty");
+        }
+        for(Appointment records:appointments)
+        {
+            if(records.getStatus()==newStatus)
+            {
+                results.add(records);
+            }
+        }
+        return results;
+    }
 }
