@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class AppointmentManager {
@@ -164,6 +165,14 @@ public class AppointmentManager {
                 results.add(records);
             }
         }
+        return results;
+    }
+
+
+    public ArrayList<Appointment>sortAppointmentByDate()
+    {
+        ArrayList<Appointment>results=new ArrayList<>(appointments);
+        results.sort(Comparator.comparing(Appointment::getDateTime));
         return results;
     }
 }

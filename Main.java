@@ -433,5 +433,13 @@ public class Main {
         {
             System.out.println(val.getPatient().getPatientId()+"-"+val.getPatient().getName());
         }
+
+
+        // Appointment sorted by datetime
+        ArrayList<Appointment>sortAppointmentByDate=appointmentmanager.sortAppointmentByDate();
+        for(Appointment appointments:sortAppointmentByDate)
+        {
+            System.out.println(appointments.getAppointmentId()+"-"+appointments.getPatient().getName()+"-"+appointments.getDateTime());
+        }
     }
 }
