@@ -340,7 +340,7 @@ public class Main {
 
 
         // Appointment booking
-        Appointment appointment=new Appointment(1,patient,doctor,LocalDateTime.of(2026,9,23,10,30));
+        Appointment appointment=new Appointment(1,patient,doctor,LocalDateTime.of(2027,9,23,10,30));
         System.out.println(appointment.getAppointmentId());
 
 
@@ -376,7 +376,7 @@ public class Main {
 
 
         // Appointment rescheduling
-        boolean scheduleAppointment=appointmentmanager.rescheduleAppointment(1, LocalDateTime.of(2025,9,23,10,30));
+        boolean scheduleAppointment=appointmentmanager.rescheduleAppointment(1, LocalDateTime.of(2027,9,23,10,30));
         if(scheduleAppointment==true)
         {
             System.out.println("Appointment reschedules to picked date");
@@ -440,6 +440,14 @@ public class Main {
         for(Appointment appointments:sortAppointmentByDate)
         {
             System.out.println(appointments.getAppointmentId()+"-"+appointments.getPatient().getName()+"-"+appointments.getDateTime());
+        }
+
+        System.out.println("upcoming date");
+        // Appointment listed by upcoming appointments
+        ArrayList<Appointment>resultUpcomingAppointments=appointmentmanager.findUpcomingAppointments();
+        for(Appointment value:resultUpcomingAppointments)
+        {
+            System.out.println(value.getAppointmentId()+"-"+value.getPatient().getName()+"-"+value.getDateTime());
         }
     }
 }

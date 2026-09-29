@@ -175,4 +175,19 @@ public class AppointmentManager {
         results.sort(Comparator.comparing(Appointment::getDateTime));
         return results;
     }
+
+
+    public ArrayList<Appointment> findUpcomingAppointments()
+    {
+        ArrayList<Appointment>results=new ArrayList<>();
+        LocalDateTime now=LocalDateTime.now();
+        for(Appointment appointment:appointments)
+        {
+            if(appointment.getDateTime().isAfter(now) && appointment.getStatus()==Appointment.Status.SCHEDULED)
+            {
+                results.add(appointment);
+            }
+        }
+        return results;
+    }
 }
