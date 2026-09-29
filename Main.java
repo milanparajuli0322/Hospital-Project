@@ -376,7 +376,7 @@ public class Main {
 
 
         // Appointment rescheduling
-        boolean scheduleAppointment=appointmentmanager.rescheduleAppointment(1, LocalDateTime.of(2027,9,23,10,30));
+        boolean scheduleAppointment=appointmentmanager.rescheduleAppointment(1, LocalDateTime.of(2026,9,29,10,30));
         if(scheduleAppointment==true)
         {
             System.out.println("Appointment reschedules to picked date");
@@ -442,12 +442,22 @@ public class Main {
             System.out.println(appointments.getAppointmentId()+"-"+appointments.getPatient().getName()+"-"+appointments.getDateTime());
         }
 
-        System.out.println("upcoming date");
+
+        System.out.println("upcoming Appointments");
         // Appointment listed by upcoming appointments
         ArrayList<Appointment>resultUpcomingAppointments=appointmentmanager.findUpcomingAppointments();
         for(Appointment value:resultUpcomingAppointments)
         {
             System.out.println(value.getAppointmentId()+"-"+value.getPatient().getName()+"-"+value.getDateTime());
+        }
+
+
+        System.out.println("Todays Appointments");
+        // Appointment listed by today appointment
+        ArrayList<Appointment>resultFindTodayAppointment=appointmentmanager.findTodayAppointments();
+        for(Appointment value:resultFindTodayAppointment)
+        {
+            System.out.println(value.getAppointmentId()+"-"+value.getPatient().getName());
         }
     }
 }

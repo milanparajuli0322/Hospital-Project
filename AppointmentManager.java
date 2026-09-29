@@ -190,4 +190,19 @@ public class AppointmentManager {
         }
         return results;
     }
+
+
+    public ArrayList<Appointment>findTodayAppointments()
+    {
+        ArrayList<Appointment>results=new ArrayList<>();
+        LocalDate now=LocalDate.now();
+        for(Appointment appointment:appointments)
+        {
+            if(appointment.getDateTime().toLocalDate().equals(now))
+            {
+                results.add(appointment);
+            }
+        }
+        return results;
+    }
 }
