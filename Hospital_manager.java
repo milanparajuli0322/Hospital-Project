@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Main {
+public class Hospital_manager {
     public static void main(String[] args) {
 
         // First patient object
@@ -459,5 +459,10 @@ public class Main {
         {
             System.out.println(value.getAppointmentId()+"-"+value.getPatient().getName());
         }
+
+
+        // Count Appointment status
+        System.out.println("Total number of scheduled appointment "+appointmentmanager.countAppointmentByStatus(Appointment.Status.SCHEDULED));
     }
 }
+// 

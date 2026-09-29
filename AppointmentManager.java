@@ -205,4 +205,22 @@ public class AppointmentManager {
         }
         return results;
     }
+
+
+    public int countAppointmentByStatus(Appointment.Status newStatus)
+    {
+        int count=0;
+        if(newStatus==null)
+        {
+            throw new IllegalArgumentException("Status counting search cannot be empty");
+        }
+        for(Appointment appointment:appointments)
+        {
+            if(appointment.getStatus()==(newStatus))
+            {
+                count+=1;
+            }
+        }
+        return count;
+    }
 }
