@@ -66,4 +66,26 @@ public class DepartmentManager {
         departments.remove(department);
         return true;
     }
+
+    public ArrayList<Department> searchDepartmentsByName(String name)
+    {
+        if (name == null || name.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Search name cannot be empty");
+        }
+
+        ArrayList<Department> results =new ArrayList<>();
+        String search =name.trim().toLowerCase();
+
+        for (Department department : departments)
+        {
+            if (department.getName()
+                    .toLowerCase()
+                    .contains(search))
+            {
+                results.add(department);
+            }
+        }
+        return results;
+    }
 }

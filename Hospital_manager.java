@@ -466,7 +466,7 @@ public class Hospital_manager {
     
 
         // Department object creation
-        Department department=new Department(1,"Cardiology","DEpartment for heart-related issues");
+        Department department=new Department(1,"Cardiology","Department for heart-related issues");
         System.out.println("Department Id :"+department.getDepartmentId());
 
 
@@ -493,6 +493,14 @@ public class Hospital_manager {
         else
         {
             System.out.println("Department id doesn't exists");
+        }
+
+
+        // Department finding by name
+        ArrayList<Department>resultDepartmentFindByName=departmentmanager.searchDepartmentsByName("Cardio");
+        for(Department departments:resultDepartmentFindByName)
+        {
+            System.out.println(departments.getDepartmentId()+"-"+department.getName());
         }
     }
 }
