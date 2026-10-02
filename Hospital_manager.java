@@ -473,5 +473,10 @@ public class Hospital_manager {
         // Department record display
         DepartmentManager departmentmanager=new DepartmentManager();
         System.out.println(departmentmanager.getAllDepartments());
+
+
+        // Department adding
+        departmentmanager.addDepartment(department);
+        System.out.println(departmentmanager.getAllDepartments());
     }
 }
