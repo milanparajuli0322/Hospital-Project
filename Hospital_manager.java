@@ -468,5 +468,10 @@ public class Hospital_manager {
         // Department object creation
         Department department=new Department(1,"Cardiology","DEpartment for heart-related issues");
         System.out.println("Department Id :"+department.getDepartmentId());
+
+
+        // Department record display
+        DepartmentManager departmentmanager=new DepartmentManager();
+        System.out.println(departmentmanager.getAllDepartments());
     }
 }
