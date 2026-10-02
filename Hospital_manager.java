@@ -468,6 +468,7 @@ public class Hospital_manager {
         // Department object creation
         Department department=new Department(1,"Cardiology","Department for heart-related issues");
         System.out.println("Department Id :"+department.getDepartmentId());
+        Department department1=new Department(2, "Neurology", "Department for brain-related issues");
 
 
         // Department record display
@@ -477,6 +478,7 @@ public class Hospital_manager {
 
         // Department adding
         departmentmanager.addDepartment(department);
+        departmentmanager.addDepartment(department1);
         System.out.println(departmentmanager.getAllDepartments());
 
 
@@ -501,6 +503,14 @@ public class Hospital_manager {
         for(Department departments:resultDepartmentFindByName)
         {
             System.out.println(departments.getDepartmentId()+"-"+department.getName());
+        }
+
+
+        // Department sorting by name
+        ArrayList<Department> resultSortingDepartmentByName=departmentmanager.sortDepartmentsByName();
+        for(Department departments:resultSortingDepartmentByName)
+        {
+            System.out.println(departments.getDepartmentId()+"-"+departments.getName());
         }
     }
 }

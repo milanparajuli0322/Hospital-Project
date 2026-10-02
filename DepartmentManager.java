@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 public class DepartmentManager {
     private final ArrayList<Department>departments;
 
@@ -86,6 +87,13 @@ public class DepartmentManager {
                 results.add(department);
             }
         }
+        return results;
+    }
+
+    public ArrayList<Department> sortDepartmentsByName()
+    {
+        ArrayList<Department> results = new ArrayList<>(departments);
+        results.sort(Comparator.comparing(Department::getName,String.CASE_INSENSITIVE_ORDER));
         return results;
     }
 }
