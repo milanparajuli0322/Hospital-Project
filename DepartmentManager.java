@@ -48,4 +48,22 @@ public class DepartmentManager {
 
         return null;
     }
+
+    public boolean removeDepartmentById(int departmentId)
+    {
+        if (departmentId <= 0)
+        {
+            throw new IllegalArgumentException( "Department ID must be positive");
+        }
+
+        Department department =findDepartmentById(departmentId);
+
+        if (department == null)
+        {
+            return false;
+        }
+
+        departments.remove(department);
+        return true;
+    }
 }

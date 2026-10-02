@@ -479,7 +479,20 @@ public class Hospital_manager {
         departmentmanager.addDepartment(department);
         System.out.println(departmentmanager.getAllDepartments());
 
-        // Department finding
+
+        // Department finding by id 
         System.out.println(departmentmanager.findDepartmentById(1).getName());
+
+
+        // Department removing by id
+        Boolean value=departmentmanager.removeDepartmentById(1);
+        if(value==true)
+        {
+            System.out.println("Department deleted sucessfully");
+        }
+        else
+        {
+            System.out.println("Department id doesn't exists");
+        }
     }
 }
