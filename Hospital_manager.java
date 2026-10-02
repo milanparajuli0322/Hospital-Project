@@ -355,11 +355,15 @@ public class Hospital_manager {
 
 
         // Appointment searching by appointment Id
-        ArrayList<Appointment> resultFindAppointmentByAppointmentId=appointmentmanager.findAppointmentById(1);
-        for(Appointment appointments:resultFindAppointmentByAppointmentId)
+        Appointment resultFindAppointmentByAppointmentId=appointmentmanager.findAppointmentById(1);
+        if(resultFindAppointmentByAppointmentId!=null)
         {
-            System.out.println(appointments.getPatient().getName());
-            System.out.println(appointments.getDateTime());
+            System.out.println(resultFindAppointmentByAppointmentId.getPatient().getName());
+            System.out.println(resultFindAppointmentByAppointmentId.getDateTime());
+        }
+        else
+        {
+            System.out.println("Appointment doesn't exist");
         }
 
 
@@ -502,7 +506,7 @@ public class Hospital_manager {
         ArrayList<Department>resultDepartmentFindByName=departmentmanager.searchDepartmentsByName("Cardio");
         for(Department departments:resultDepartmentFindByName)
         {
-            System.out.println(departments.getDepartmentId()+"-"+department.getName());
+            System.out.println(departments.getDepartmentId()+"-"+departments.getName());
         }
 
 

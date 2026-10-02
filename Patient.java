@@ -204,17 +204,17 @@ public class Patient {
 
     public ArrayList<String> getMedicalConditions()
     {
-        return medicalConditions;
+        return new ArrayList<>(medicalConditions);
     }
 
 
     public void addMedicalConditions(String condition)
     {
-        condition=condition.toUpperCase();
         if(condition==null || condition.trim().isEmpty())
         {
             throw new IllegalArgumentException("Medical condition cannot be empty");
         }
+        condition=condition.toUpperCase();
         
         for(String existingCondition : medicalConditions)
         {
@@ -230,11 +230,12 @@ public class Patient {
     public void removeMedicalConditions(String condition)
     {
         boolean found=true;
-        condition=condition.toUpperCase();
         if(condition==null || condition.trim().isEmpty())
         {
             throw new IllegalArgumentException("Medical condition cannot be empty");
         }
+        condition=condition.toUpperCase();
+        
         for(String existingCondition : medicalConditions)
         {
             if(!(existingCondition.equalsIgnoreCase(condition.trim())))

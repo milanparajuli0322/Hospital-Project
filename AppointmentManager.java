@@ -42,17 +42,17 @@ public class AppointmentManager {
     }
 
 
-    public ArrayList<Appointment> findAppointmentById(int appointmentId)
+    public Appointment findAppointmentById(int appointmentId)
     {
         if(appointmentId<=0)
         {
             throw new IllegalArgumentException("Appointment Id cannot be empty");
         }
-        for(Appointment val:appointments)
+        for(Appointment appointment:appointments)
         {
-            if(val.getAppointmentId()==appointmentId)
+            if(appointment.getAppointmentId()==appointmentId)
             {
-                return appointments;
+                return appointment;
             }
         }
         return null;
@@ -77,25 +77,41 @@ public class AppointmentManager {
     }
 
 
-    public boolean rescheduleAppointment(int appointmentId,LocalDateTime newdDateTime)
+    public boolean rescheduleAppointment(int appointmentId,LocalDateTime newDateTime)
     {
-        while(appointmentId<=0 || newdDateTime==null)
+        if (appointmentId <= 0 || newDateTime == null)
         {
-            throw new IllegalArgumentException("Appointment Id or scheduled date is invalid");
+            throw new IllegalArgumentException("Appointment ID or scheduled date is invalid"
+            );
         }
-        for(Appointment appointment:appointments)
+
+        Appointment appointmentToReschedule =findAppointmentById(appointmentId);
+
+        if (appointmentToReschedule == null)
         {
-            if(appointment.getAppointmentId()==appointmentId)
+            return false;
+        }
+
+        if (appointmentToReschedule.getStatus()== Appointment.Status.CANCELLED)
+        {
+            return false;
+        }
+
+        for (Appointment appointment : appointments)
+        {
+            if (appointment.getAppointmentId() != appointmentId
+                    && appointment.getDoctor().getDoctorId()
+                    == appointmentToReschedule.getDoctor().getDoctorId()
+                    && appointment.getDateTime().equals(newDateTime)
+                    && appointment.getStatus()
+                    == Appointment.Status.SCHEDULED)
             {
-                if(appointment.getStatus()==Appointment.Status.CANCELLED)
-                {
-                    return false;
-                }
-                appointment.setDateTime(newdDateTime);
-                return true;
+                throw new IllegalArgumentException("Doctor already has an appointment at this time");
             }
         }
-        return false;
+
+        appointmentToReschedule.setDateTime(newDateTime);
+        return true;
     }
 
 

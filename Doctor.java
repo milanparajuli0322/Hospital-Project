@@ -87,7 +87,7 @@ public class Doctor
 
     public void setPhone(String phone)
     {
-        if(phone==null || phone.trim().isEmpty())
+        if(phone==null || phone.trim().isEmpty() || !phone.matches("\\d{10}"))
         {
             throw new IllegalArgumentException("Phone update cannot be empty");
         }
@@ -96,7 +96,7 @@ public class Doctor
 
     public void setEmail(String email)
     {
-        if(email==null || email.trim().isEmpty())
+        if(email==null || email.trim().isEmpty() || !email.trim().matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"))
         {
             throw new IllegalArgumentException("Email update cannot be empty");
         }

@@ -39,7 +39,7 @@ public class MedicalRecordManager
     {
         if(patientId<=0)
         {
-            throw new IllegalArgumentException("patient id cant be positive");
+            throw new IllegalArgumentException("patient Id be positive");
         }
         ArrayList<MedicalRecord> results=new ArrayList<>();
         for(MedicalRecord record:medicalRecords)

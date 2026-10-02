@@ -18,6 +18,13 @@ public class DoctorManager {
         }
         else
         {
+            for(Doctor existing:doctors)
+            {
+                if(existing.getDoctorId()==doctor.getDoctorId())
+                {
+                    throw new IllegalArgumentException("Doctor Id already exists");
+                }
+            }
             doctors.add(doctor);
         }
     }

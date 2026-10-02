@@ -32,6 +32,11 @@ public class PatientManager {
 
     public Patient findPatientById(int patientId)
     {
+        if(patientId<=0)
+        {
+            throw new IllegalArgumentException("Invalid patient Id to find");
+        }
+        
         for(Patient patient:patients)
         {
             if(patient.getPatientId()==patientId)
@@ -193,15 +198,13 @@ public class PatientManager {
         {
             throw new IllegalArgumentException("Blood group cannot be empty");
         }
-        else
+        bloodgroup=bloodgroup.trim();
+        for(Patient patient:patients)
         {
-            for(Patient patient:patients)
-            {
-                if(patient.getBloodGroup().trim().contains(bloodgroup))
-                    results.add(patient);
-            }
-            return results;
+            if(patient.getBloodGroup().trim().contains(bloodgroup))
+                results.add(patient);
         }
+        return results;
     }
 
 
@@ -264,7 +267,10 @@ public class PatientManager {
         {
             for(Patient patient:patients)
             {
-                results.add(patient);
+                if(patient.getGender()==gender)
+                {
+                    results.add(patient);
+                }
             }
             return results;
         }
@@ -282,7 +288,10 @@ public class PatientManager {
         {
             for(Patient patient:patients)
             {
-                results.add(patient);
+                if(patient.getRegistrationDate().equals(date))
+                {
+                    results.add(patient);
+                }
             }
             return results;
         }
@@ -307,14 +316,20 @@ public class PatientManager {
 
     public ArrayList<Patient> filterPatentByAge(int minAge,int maxAge)
     {
-        if(minAge<0 || maxAge<minAge)
+        if(minAge<0 || maxAge<0)
         {
             throw new IllegalArgumentException("Invalid age range");
         }
+
+        if(minAge>maxAge)
+        {
+            throw new IllegalArgumentException("Minimun age cannot be larger than maximum age");
+        }
+
         ArrayList<Patient> results=new ArrayList<>();
         for(Patient patient:patients)
         {
-            if(patient.getAge()<maxAge && patient.getAge()>minAge)
+            if(patient.getAge()<=maxAge && patient.getAge()>=minAge)
             {
                 results.add(patient);
             }
@@ -326,11 +341,11 @@ public class PatientManager {
     public ArrayList<Patient> findPatientByMedicalconditions(String condition)
     {
         ArrayList<Patient> results=new ArrayList<>();
-        condition=condition.toUpperCase();
         if(condition==null || condition.trim().isEmpty())
         {
             throw new IllegalArgumentException("Medical condition search cannot be empty");
         }
+        condition=condition.toUpperCase();
         for(Patient patient:patients)
         {
             if(patient.getMedicalConditions().contains(condition))
