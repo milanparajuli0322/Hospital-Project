@@ -463,6 +463,10 @@ public class Hospital_manager {
 
         // Count Appointment status
         System.out.println("Total number of scheduled appointment "+appointmentmanager.countAppointmentByStatus(Appointment.Status.SCHEDULED));
+    
+
+        // Department object creation
+        Department department=new Department(1,"Cardiology","DEpartment for heart-related issues");
+        System.out.println("Department Id :"+department.getDepartmentId());
     }
 }
-// 
