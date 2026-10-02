@@ -28,4 +28,24 @@ public class DepartmentManager {
         }
         departments.add(department);
     }
+
+    public Department findDepartmentById(int departmentId)
+    {
+        if (departmentId <= 0)
+        {
+            throw new IllegalArgumentException(
+                    "Department ID must be positive"
+            );
+        }
+
+        for (Department department : departments)
+        {
+            if (department.getDepartmentId() == departmentId)
+            {
+                return department;
+            }
+        }
+
+        return null;
+    }
 }
